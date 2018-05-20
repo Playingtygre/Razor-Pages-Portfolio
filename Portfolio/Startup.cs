@@ -34,6 +34,9 @@ namespace Portfolio
             );
 
             services.AddScoped<IProjectService, ProjectService>();
+
+            services.AddDbContext<PortfolioContext>(options =>
+                    options.UseSqlServer(Configuration.GetConnectionString("PortfolioContext")));
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
@@ -50,8 +53,9 @@ namespace Portfolio
             }
 
             app.UseStaticFiles();
-
+            app.UseMvcWithDefaultRoute();
             app.UseMvc();
+
         }
     }
 }

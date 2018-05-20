@@ -11,7 +11,7 @@ using System;
 namespace Portfolio.Migrations
 {
     [DbContext(typeof(ProjectDbContext))]
-    [Migration("20180513005337_Initial")]
+    [Migration("20180520083027_Initial")]
     partial class Initial
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)

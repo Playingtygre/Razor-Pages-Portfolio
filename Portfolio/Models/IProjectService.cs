@@ -14,6 +14,7 @@ namespace Portfolio.Models
         Task<Project> FindAsync(int id);
 
         IQueryable<Project> GetAll(int? count = null, int? page = null);
+
         Task<Project[]> GetAllAsync(int? count = null, int? page = null);
 
         Task SaveAsync(Project project);

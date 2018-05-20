@@ -1,0 +1,24 @@
+﻿@using Portfolio.Models
+
+@inject IProjectService  ProjectService
+
+@{
+    ViewData["Title"] = "Home page";
+
+    var projects = await ProjectService.GetAllAsync();
+}
+
+<div>
+    @foreach (var project in projects)
+    {
+        @if (project.Image != null)
+        {
+            <img class=" img-thumbnail" height="150" src="@project.GetInlineImage()">
+
+        }
+        else
+        {
+            <img class="img-thumbnail" height="150" src="@project.ImageUrl">
+        }
+    }
+</div>
