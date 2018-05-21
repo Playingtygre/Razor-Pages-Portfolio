@@ -10,25 +10,25 @@ using Microsoft.EntityFrameworkCore;
 using RazorPagesExample.Data;
 using RazorPagesExample.Models;
 
+
 namespace RazorPagesExample
 {
     public class Startup
     {
+
+        public IConfiguration Configuration { get; }
+
         public Startup(IConfiguration configuration)
         {
             Configuration = configuration;
         }
 
-        public IConfiguration Configuration { get; }
-
         // This method gets called by the runtime. Use this method to add services to the container.
         public void ConfigureServices(IServiceCollection services)
         {
 
-            services.AddDbContext<AutoDbContext>(options =>
+           services.AddDbContext<AutoDbContext>(options =>
            options.UseSqlServer(Configuration.GetConnectionString("DefaultConnection")));
-
-            
 
             services.AddMvc();
         }

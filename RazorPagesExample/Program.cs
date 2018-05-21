@@ -25,10 +25,18 @@ namespace RazorPagesExample
 
                 try
                 {
-                    Task AutoSeeding = AutoSeeding.Initialize(services);
-                }
+                    Task AutoSeeding = SeedAuto.Initialize(services);
 
+                    while (!AutoSeeding.IsCompleted){}
+                }
+                catch
+                {
+                    Console.Error.WriteLine("Not properly Seeded Data");
+                    throw;
+                }
             }
+
+            host.Run();
 
              
         }

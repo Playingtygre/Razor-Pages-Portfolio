@@ -1,0 +1,29 @@
+﻿@page
+@model RazorPagesExample.Pages.AutoModel
+@{
+    ViewBag.Title = Model.Auto?.Name ?? "Automobile not found";
+    ViewData["Title"] = "Auto";
+}
+
+@if (Model.Auto != null)
+{
+<h1>@Model.Auto.Name</h1>
+<a asp-page="Edit" asp-route-id="@Model.Auto.Id">Edit</a>
+    @if (!string.IsNullOrWhiteSpace(Model.Auto.ImageUrl))
+    {
+        <img src="@Model.Auto.ImageUrl">
+    }
+
+    else
+    {
+        <hr/>
+        <br/>
+     }
+
+   <!-- Add shit here
+       ?-->
+
+ }
+
+<h2>Auto's</h2>
+

@@ -1,0 +1,51 @@
+﻿@page
+
+@model RazorPagesExample.Pages.EditModel
+
+@{
+    ViewBag.Title = Model.IsNewAuto ? "Create New Article" : $"Editing{Model.Auto.Name}";
+}
+
+<h1> @ViewBag.Name </h1>
+
+
+<form method="post">
+    <div asp-validation-summary="ModelOnly"></div>
+    <dl>
+        <dt><label asp-for="Auto.Name"></label></dt>
+        <dd>
+            <input asp-for="Auto.Name"/>
+            <span asp-validation-for="Auto.Name"></span>
+            <br />
+        </dd>
+        <dt><label asp-for="Auto.ImageUrl"></label></dt>
+        <dd>
+            <input asp-for="Auto.ImageUrl" />
+            <span asp-validation-for="Auto.ImageUrl"></span>
+            <br />
+        </dd>
+        <dt><label asp-for="Auto.Summary"></label></dt>
+        <dd>
+            <textarea asp-for="Auto.Summary"></textarea>
+            <span asp-validation-for="Auto.Summary"></span>
+        </dd>
+    </dl>
+
+    <button type="submit">Submit</button>
+
+    @if (!Model.IsNewAuto)
+    {
+        <input hidden asp-for="Auto.Id" />
+        <button type="submit" asp-page-handler="Delete">Delete</button>
+        <a asp-page="Article" asp-route-id="@Model.Auto.Id">Cancel</a>
+    }
+    else
+    {
+        <a asp-page="Index" >Cancel</a>
+    }
+
+</form>
+
+
+<h2>Edit</h2>
+
